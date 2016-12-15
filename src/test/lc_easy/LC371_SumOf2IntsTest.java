@@ -36,4 +36,10 @@ class LC371_SumOf2IntsTest {
         assertEquals(31, sol.getSum(a, b));
     }
 
+    @Test
+    void getSumTwoZeros() {
+        int a = 0, b = 0;
+        assertEquals(0, sol.getSum(a, b));
+    }
+
 }
