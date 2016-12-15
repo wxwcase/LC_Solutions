@@ -14,17 +14,17 @@ public class LC104_MaxDepthBinaryTree {
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
-    static class TreeNode {
-
-        int val;
-
-        TreeNode left;
-
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+//    static class TreeNode {
+//
+//        int val;
+//
+//        TreeNode left;
+//
+//        TreeNode right;
+//
+//        TreeNode(int x) {
+//            val = x;
+//        }
+//    }
 }
 

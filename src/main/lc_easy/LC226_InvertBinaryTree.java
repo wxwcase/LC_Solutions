@@ -5,12 +5,12 @@ package main.lc_easy;
  */
 public class LC226_InvertBinaryTree {
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x;}
-    }
+//    static class TreeNode {
+//        int val;
+//        TreeNode left;
+//        TreeNode right;
+//        TreeNode(int x) { val = x;}
+//    }
 
     public TreeNode invertTree(TreeNode root) {
 
