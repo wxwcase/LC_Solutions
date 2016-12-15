@@ -7,8 +7,11 @@ import java.util.List;
  * Created by wwang on 12/13/2016.
  */
 public class LC412_FizzBuzz {
+
     public List<String> fizzBuzz(int n) {
+
         List<String> res = new ArrayList();
+
         for (int i = 1; i <= n; i++) {
             if (i % 15 == 0) {
                 res.add("FizzBuzz");
@@ -20,6 +23,7 @@ public class LC412_FizzBuzz {
                 res.add(Integer.toString(i));
             }
         }
+
         return res;
     }
 }

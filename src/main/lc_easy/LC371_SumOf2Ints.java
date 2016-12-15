@@ -6,18 +6,13 @@ package main.lc_easy;
 public class LC371_SumOf2Ints {
 
     public int getSum(int a, int b) {
+
         while (b != 0) {
             int c = (a & b) << 1;
             a ^= b;
             b = c;
         }
+
         return a;
-//        int c = a & b;
-//        while (b != 0) {
-//            a = a ^ b;
-//            b = c << 1;
-//            c = a & b;
-//        }
-//        return a;
     }
 }
