@@ -1,9 +1,7 @@
 package main.lc_easy;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
 
 /**
  * Created by wwang on 12/16/2016.
