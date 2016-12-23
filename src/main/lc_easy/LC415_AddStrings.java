@@ -7,10 +7,14 @@ public class LC415_AddStrings {
 
     public String addString(String num1, String num2) {
 
-        // base case
-        if ((num1 == null) || (num2 == null))
+        if (num1 == null && num2 == null)
             return "";
+        else if (num1 == null)
+            return num2;
+        else if (num2 == null)
+            return num1;
 
+        // base case
         int l1 = num1.length();
         int l2 = num2.length();
 
@@ -20,34 +24,18 @@ public class LC415_AddStrings {
             return num1;
 
         // no one is empty/null
-        boolean carry = false;
         StringBuilder sb = new StringBuilder();
-        int loop = l1 > l2 ? l2 : l1;
-        for (int i = loop - 1; i >= 0; i--) {
-            int opd1 = Integer.valueOf("" + num1.charAt(loop));
-            int opd2 = Integer.valueOf("" + num2.charAt(loop));
-            int res = opd1 + opd2 + (carry ? 1 : 0);
-            if (res > 9) {
-                carry = true;
-                res %= 10;
-            } else {
-                carry = false;
-            }
-            sb.append(res);
-        }
 
-        if (l1 == l2) {
-            if (carry) {
-                sb.append(1);
-            }
-        } else if (l1 > l2){
-            for (int i = l1 - l2; i >= 0; i++) {
-                sb.append(num1.charAt(i));
-            }
-        } else {
-            for (int i = l2 - l1; i >= 0; i++) {
-                sb.append((num2.charAt(i)));
-            }
+        boolean carry = false;
+
+        for (int i = num1.length() - 1, j = num2.length() - 1;
+                i >= 0 || j >= 0 || carry == true;
+                i--, j--) {
+            int opd1 = (i < 0) ? 0 : (num1.charAt(i) - '0');
+            int opd2 = (j < 0) ? 0 : (num2.charAt(j) - '0');
+            int d = opd1 + opd2 + (carry ? 1 : 0);
+            sb.append(d % 10);
+            carry = d >= 10;
         }
 
         return sb.reverse().toString();
