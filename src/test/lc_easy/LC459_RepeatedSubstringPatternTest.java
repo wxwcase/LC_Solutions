@@ -31,7 +31,7 @@ class LC459_RepeatedSubstringPatternTest {
 
     @Ignore
     void repeatedSubstringPattern() {
-        String a1 = "abab", a2 = "aba", a3 = "abcabcabcabc";
+        String a1 = "abab", a2 = "aba", a3 = "abcabcabcabc", a4 = "b";
         assertTrue(sol.repeatedSubstringPattern(a1));
         assertFalse(sol.repeatedSubstringPattern(a2));
         assertTrue(sol.repeatedSubstringPattern(a3));
@@ -39,9 +39,8 @@ class LC459_RepeatedSubstringPatternTest {
 
     @Test
     void repeatedSubstringPatternTrue() {
-        String a = "abab", b = "c", c = "cdcdcd", d = "aabbccaabbcc";
+        String a = "abab", c = "cdcdcd", d = "aabbccaabbcc";
         assertTrue(sol.repeatedSubstringPattern(a));
-        assertTrue(sol.repeatedSubstringPattern(b));
         assertTrue(sol.repeatedSubstringPattern(c));
         assertTrue(sol.repeatedSubstringPattern(d));
     }
