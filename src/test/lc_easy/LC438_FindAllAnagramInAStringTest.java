@@ -24,7 +24,7 @@ class LC438_FindAllAnagramInAStringTest {
         e.add(0);
         e.add(6);
 
-        List<Integer> r = sol.fndAnagram(a, b);
+        List<Integer> r = sol.findAnagrams(a, b);
 
         assertTrue(e.containsAll(r) && r.containsAll(e));
     }
@@ -39,7 +39,7 @@ class LC438_FindAllAnagramInAStringTest {
         e.add(1);
         e.add(2);
 
-        List<Integer> r = sol.fndAnagram(a, b);
+        List<Integer> r = sol.findAnagrams(a, b);
 
         assertTrue(e.containsAll(r) && r.containsAll(e));
     }

@@ -63,7 +63,7 @@ public class LC438_FindAllAnagramInAString {
      * @param p
      * @return
      */
-    public List<Integer> fndAnagramSlow(String s, String p) {
+    public List<Integer> findAnagramSlow(String s, String p) {
 
         List<Integer> res = new LinkedList<>();
 
