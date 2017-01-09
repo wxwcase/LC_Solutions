@@ -10,13 +10,60 @@ import java.util.List;
  */
 public class LC438_FindAllAnagramInAString {
 
+
+    /**
+     * Slide window solution, complexity O(n)
+     * @param s
+     * @param p
+     * @return
+     */
+    public List<Integer> findAnagrams(String s, String p) {
+
+        List<Integer> res = new LinkedList<>();
+
+        if (s == null || s.length() == 0 || p == null || p.length() == 0)
+            return res;
+
+        int[] hash = new int[256];
+        for (char c : p.toCharArray()) {
+            ++hash[c];
+        }
+
+        int start = 0, end = 0, match = 0;
+
+        while (end < s.length()) {
+            if (hash[s.charAt(end)] > 0) {
+                // find one char match
+                ++match;
+            }
+            // count down hash
+            --hash[s.charAt(end)];
+            // move right pointer
+            ++end;
+
+            if (match == p.length()) res.add(start);
+
+            // move window of width p.length()
+            if (end - start == p.length()) {
+                // if character exits originally in hash, then count down match
+                if (hash[s.charAt(start)] >= 0) {
+                    --match;
+                }
+                hash[s.charAt(start)]++;
+                start++;
+            }
+        }
+
+        return res;
+    }
+
     /**
      * Slow solution.
      * @param s
      * @param p
      * @return
      */
-    public List<Integer> fndAnagram(String s, String p) {
+    public List<Integer> fndAnagramSlow(String s, String p) {
 
         List<Integer> res = new LinkedList<>();
 
