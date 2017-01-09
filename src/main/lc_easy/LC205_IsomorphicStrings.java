@@ -38,6 +38,7 @@ public class LC205_IsomorphicStrings {
     }
 
 
+    // solution 2
     public boolean isIsomorphic2(String s, String t) {
         Set<Integer> ss = new HashSet<>();
         Set<Integer> ts = new HashSet<>();
@@ -46,12 +47,24 @@ public class LC205_IsomorphicStrings {
         for (int i = 0; i < s.length(); i++) {
             ss.add((int)s.charAt(i));
             ts.add((int)t.charAt(i));
-            st.add((int)zip(s.charAt(i), t.charAt(i)));
+            st.add((s.charAt(i) << 16) + t.charAt(i));
         }
         return ss.size() == ts.size() && ts.size() == st.size();
     }
 
-    public int zip(char a, char b) {
-        return (a << 16) + b;
+    // solution 3
+    public boolean isIsomorphic3(String s, String t) {
+        Map<Character, Character> map = new HashMap<>();
+        char[] ss = s.toCharArray();
+        char[] tt = t.toCharArray();
+        if (s.length() != t.length()) return false;
+        for (int i = 0; i < ss.length; i++) {
+            if (!map.containsKey(ss[i])) {
+                map.put(ss[i], tt[i]);
+            } else {
+                if (!map.get(ss[i]).equals(tt[i])) return false;
+            }
+        }
+        return map.size()== new HashSet<>(map.values()).size();
     }
 }
