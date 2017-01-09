@@ -1,7 +1,9 @@
 package main.lc_easy;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by wwang on 1/9/2017.
@@ -33,5 +35,23 @@ public class LC205_IsomorphicStrings {
         }
 
         return new String(tt).equals(s);
+    }
+
+
+    public boolean isIsomorphic2(String s, String t) {
+        Set<Integer> ss = new HashSet<>();
+        Set<Integer> ts = new HashSet<>();
+        Set<Integer> st = new HashSet<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            ss.add((int)s.charAt(i));
+            ts.add((int)t.charAt(i));
+            st.add((int)zip(s.charAt(i), t.charAt(i)));
+        }
+        return ss.size() == ts.size() && ts.size() == st.size();
+    }
+
+    public int zip(char a, char b) {
+        return (a << 16) + b;
     }
 }
