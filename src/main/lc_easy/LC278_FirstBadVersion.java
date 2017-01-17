@@ -20,4 +20,9 @@ public class LC278_FirstBadVersion {
 
         return lo;
     }
+
+    public boolean isBadVersion(int n) {
+        // dummy
+        return true;
+    }
 }
