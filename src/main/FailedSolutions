@@ -11,4 +11,9 @@ LC 257 Binary Tree Path, 1, Easy, 20170105, DFS,
 LC 438 Find all anagrams in a string, 1, Easy, 20170109, substring,
 LC 475 Heaters, 1, Easy, 20170111, binary search,
 LC 1 Two Sum, 1, Easy, 20170112, hash table,
+LC 8 String to integer, 1, Easy, 20170117, ,
+
+LC 406 Queue reconstruction by height, 1, Medium, 20170118, Greedy,
+LC 260 Single number iii, 1, Medium, 20170119, Bit manipulation,
+
 
