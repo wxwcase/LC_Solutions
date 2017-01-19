@@ -27,6 +27,7 @@ public class LC260_SingleNumberIII {
         }
 
         // find the last digit the two numbers differs
+        // diff &= ~(diff - 1); easier to understand: find last 1 bit.
         diff &= -diff;
 
         int[] res = {0, 0};
