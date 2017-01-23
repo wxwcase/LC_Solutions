@@ -16,7 +16,7 @@ class LC357_CountNumbersWithUniqueDigitsTest {
     void countNumbersWithUniqueDigitsZero() {
         int n1 = 0;
         int n2 = 1;
-        assertEquals(0, sol.countNumbersWithUniqueDigits(n1));
+        assertEquals(1, sol.countNumbersWithUniqueDigits(n1));
         assertEquals(10, sol.countNumbersWithUniqueDigits(n2));
     }
 
@@ -25,4 +25,18 @@ class LC357_CountNumbersWithUniqueDigitsTest {
         int n = 2;
         assertEquals(91, sol.countNumbersWithUniqueDigits(n));
     }
+
+    @Test
+    void countNumbersWithUniqueDigits3() {
+        int n = 3;
+        assertEquals(739, sol.countNumbersWithUniqueDigits(n));
+    }
+
+    @Test
+    void countNumbersWithUniqueDigits4() {
+        int n = 4;
+        assertEquals(5275, sol.countNumbersWithUniqueDigits(n));
+    }
+
+
 }
