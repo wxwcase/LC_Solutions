@@ -52,6 +52,7 @@ public class LC211_AddAndSearchWord {
 
                 if (c == '.') {
                     for (TrieNode n : node.children.values()) {
+                        // process last dot
                         if (i == word.length() - 1 && n.endOfWord)
                             return true;
                         if (n != null && helper(word.substring(i + 1), n)) {
