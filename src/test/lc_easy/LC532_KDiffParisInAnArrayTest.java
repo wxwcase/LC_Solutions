@@ -45,4 +45,10 @@ class LC532_KDiffParisInAnArrayTest {
         assertEquals(1, sol.findPairs(n, k));
     }
 
+    @Test
+    void findPairsNegative() {
+        int[] n = {-1, -2, -3};
+        int k = 1;
+        assertEquals(2, sol.findPairs(n, k));
+    }
 }
