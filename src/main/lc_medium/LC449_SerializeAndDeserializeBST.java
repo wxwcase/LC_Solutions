@@ -87,5 +87,59 @@ public class LC449_SerializeAndDeserializeBST {
 
             return root;
         }
+
     }
+
 }
+
+    // solution 2
+    class Codec2 {
+
+        public String serialize(TreeNode root) {
+
+            StringBuilder sb = new StringBuilder();
+
+            if (root == null) return sb.toString();
+
+            sb.append(root.val + ",");
+
+            sb.append(serialize(root.left));
+            sb.append(serialize(root.right));
+
+            return sb.substring(0, sb.length() - 1);
+        }
+
+        public TreeNode deserialize(String data) {
+
+            String[] strings = data.split(",");
+            LinkedList<String> list = new LinkedList<>();
+            for (String s : strings) {
+                list.add(s);
+            }
+
+            return reconstructPreorder(list);
+        }
+
+        public TreeNode reconstructPreorder(LinkedList<String> queue) {
+
+            for (String s : queue) {
+                System.out.print(s + " ");
+            }
+            System.out.println();
+
+            TreeNode head = null;
+
+            String val = queue.poll();
+
+            if (val == null || val.equals("")) {
+                return head;
+            }
+
+            head = new TreeNode(Integer.valueOf(val));
+
+            head.left = reconstructPreorder(queue);
+            head.right = reconstructPreorder(queue);
+
+            return head;
+        }
+    }
