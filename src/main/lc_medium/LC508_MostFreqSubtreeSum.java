@@ -9,43 +9,59 @@ import java.util.*;
  */
 public class LC508_MostFreqSubtreeSum {
 
-    int freq = 0;
-    int freqSum = 0;
-    int preLeftSum = 0;
-    int preRightSum = 0;
-    Set<Integer> items = new HashSet<>();
+    int freq = 1;
 
     public int[] findFrequentTreeSum(TreeNode root) {
 
         int[] res = null;
+        int len = 0;
 
-        if (root == null) return res;
+        if (root == null) return new int[0];
 
-        helper(root);
+        Map<Integer, Integer> map = new HashMap<>();
 
-        res = new int[items.size()];
+        // post-order traversal
+        helper(root, map);
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == freq) {
+                len++;
+            }
+        }
+
+        res = new int[len];
+
         int c = 0;
-        for (int i : items) {
-            res[c++] = i;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == freq) {
+                res[c++] = entry.getKey();
+            }
         }
 
         return res;
     }
 
-    private void helper(TreeNode node) {
+    // returns the sub-tree sum
+    private int helper(TreeNode node, Map<Integer, Integer> map) {
 
-        if (node == null) return;
+        if (node == null) return 0;
 
-        // leaf node
-        if ((node.left == null)
-                && (node.right == null)
-                && (node.val == freqSum)
-                && !items.contains(node.val)) {
-            freqSum++;
-            items.add(node.val);
+        int val = node.val;
+        int lval = helper(node.left, map);
+        int rval = helper(node.right, map);
+        int subsum = val + lval + rval;
+
+        if (map.containsKey(subsum)) {
+            int newcount = map.get(subsum) + 1;
+            map.put(subsum, newcount);
+            if (newcount > freq) {
+                freq = newcount;
+            }
+        } else {
+            map.put(subsum, 1);
         }
 
-        helper(node.left);
-        helper(node.right);
+        return subsum;
     }
+
 }
