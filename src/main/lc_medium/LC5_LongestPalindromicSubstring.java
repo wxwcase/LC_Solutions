@@ -44,6 +44,9 @@ public class LC5_LongestPalindromicSubstring {
     // solution 2
     // Time O(N)
     // Manacher's Algorithm:
+    // https://en.wikipedia.org/wiki/Longest_palindromic_substring
+    // http://articles.leetcode.com/longest-palindromic-substring-part-ii
+    // https://tarokuriyama.com/projects/palindrome2.php
     // http://www.geeksforgeeks.org/manachers-algorithm-linear-time-longest-palindromic-substring-part-1/
     public String longestPalindromeLinear(String s) {
 
