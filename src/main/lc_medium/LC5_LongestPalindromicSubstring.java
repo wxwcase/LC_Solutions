@@ -66,7 +66,7 @@ public class LC5_LongestPalindromicSubstring {
             while (T[i + (1 + P[i])] == T[i - (1 + P[i])])
                 P[i]++;
 
-            // change position of center and right boundary
+            // check if palindrome at i expand beyond boundary R
             if (i + P[i] > R) {
                 C = i;
                 R = i + P[i];
