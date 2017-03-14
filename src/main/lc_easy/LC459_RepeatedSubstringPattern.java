@@ -33,4 +33,10 @@ public class LC459_RepeatedSubstringPattern {
 
         return false;
     }
+
+    // https://discuss.leetcode.com/topic/68206/easy-python-solution-with-explaination/6
+    public boolean repeatedSubstringPattern2(String s) {
+        String t = (s + s).substring(1, 2 * s.length() - 1);
+        return t.contains(s);
+    }
 }
