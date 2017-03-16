@@ -1,5 +1,7 @@
 package main.lc_hard;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -12,27 +14,26 @@ public class LC239_SlidingWindowMaxium {
     // assume 1 <= k <= input
     public int[] maxSlidingWindow(int[] nums, int k) {
 
-        if (nums.length < 1 || k == 1) return nums;
+        if (nums == null || nums.length == 0 || k >= nums.length) return new int[0];
 
         int[] res = new int[nums.length - k + 1];
 
-        int m = 0;
+        Deque<Integer> queue = new LinkedList<>();
 
-        TreeSet<Integer> set = new TreeSet<>();
+        int count = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            boolean r = set.add(nums[i]);
-            if (i >= k) {
-                System.out.println("Removing: " + nums[i - k]);
-                set.remove(nums[i - k]);
-                System.out.println("Max: " + set.last() + ", Min: " + set.first());
+            while (!queue.isEmpty() && queue.peek() < i - k + 1) {
+                queue.poll();
             }
-            if (i + 1 >= k) {
-                System.out.println(set.last());
-                res[m++] = set.last();
+            while (!queue.isEmpty() && nums[queue.peekLast()] < nums[i]) {
+                queue.pollLast();
+            }
+            queue.offer(i);
+            if (i > k) {
+                res[count++] = nums[queue.peek()];
             }
         }
-
 
         return res;
     }
