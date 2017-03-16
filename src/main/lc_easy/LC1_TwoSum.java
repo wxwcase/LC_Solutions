@@ -32,4 +32,15 @@ public class LC1_TwoSum {
 
         return res;
     }
+
+    // Follow-up: duplicates: find all candidate index pairs
+
+    // http://www.sigmainfy.com/blog/two-sum-problem-analysis-3-handling-duplicates-input.html
+    // Well, as we need to return all the possible index pairs (i, j) such that A[i] + A[j] = target,
+    // in the worst extreme case: say the array consists of 100 elements all of which are the same
+    // value 1, and the target is 2, it is obvious all the index pair (1, 2), (1, 3) … (1, 100),
+    // (2, 3)… (2, 100) …… (99, 100) are our answers, the number of such pair is O(N^2), this means,
+    // we at least need O(N^2) time even to form such pairs. Based on this fact, I conclude that in
+    // this different context we are asked to return all possible index pairs, no amazing algorithms
+    // or techniques could guarantee the worst time complexity better than O(N^2).
 }
