@@ -36,7 +36,8 @@ public class LC438_FindAllAnagramInAString {
                 // find one char match
                 ++match;
             }
-            // count down hash
+            // count down hash, if char not in hash, then it will be less than 0
+            // useful for testing hash[c] == 0 and add left
             --hash[s.charAt(end)];
             // move right pointer
             ++end;
