@@ -44,4 +44,11 @@ class LC516_LongestPalindromicSubsequenceTest {
         int r = 5;
         assertEquals(r, sol.longestPalindromeSubseq(s));
     }
+
+    @Test
+    void longestPalindromeSubseq4() {
+        String s = "bbbab";
+        int r = 4;
+        assertEquals(r, sol.longestPalindromeSubseq(s));
+    }
 }
