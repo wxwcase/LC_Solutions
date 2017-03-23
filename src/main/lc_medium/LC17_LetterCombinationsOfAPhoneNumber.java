@@ -29,10 +29,10 @@ public class LC17_LetterCombinationsOfAPhoneNumber {
         map.put('8', new char[] {'t', 'u', 'v'});
         map.put('9', new char[] {'w', 'x', 'y', 'z'});
 
-        return helper(map, digits, res);
+        return helper(map, digits);
     }
 
-    private List<String> helper(Map<Character, char[]> map, String digits, List<String> res) {
+    private List<String> helper(Map<Character, char[]> map, String digits) {
 
         List<String> tmp = new ArrayList<>();
 
@@ -40,18 +40,22 @@ public class LC17_LetterCombinationsOfAPhoneNumber {
 
         char c = digits.charAt(0);
 
+        tmp = helper(map, digits.substring(1));
+
         if (map.containsKey(c)) {
             char[] range = map.get(c);
-            for (char r : range) {
-                for (String s : res) {
-                    tmp.add(r + s);
-                }
+            if (tmp.size() == 0) {
+                for (char r : range)
+                    tmp.add(r + "");
+            } else {
+                List<String> n = new ArrayList<>();
+                for (char r : range)
+                    for (int i = 0; i < tmp.size(); i++)
+                        n.add(r + tmp.get(i));
+                tmp = n;
             }
-            return tmp;
-        } else if (digits.length() < 2){
-            return res;
         }
 
-        return helper(map, digits.substring(1), res);
+        return tmp;
     }
 }
