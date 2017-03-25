@@ -15,6 +15,14 @@ public class LC252_MeetingRooms {
 
         if (intervals == null || intervals.length == 0) return true;
 
+//        Arrays.sort(intervals, new Comparator<Interval>(){
+//            @Override
+//            public int compare(Interval lhs, Interval rhs){
+//                if (lhs.start == rhs.start) return 0;
+//                return lhs.start > rhs.start ? 1 : -1;
+//            }
+//        });
+
         Arrays.sort(intervals, new Comparator<Interval>() {
             @Override
             public int compare(Interval a, Interval b) {
@@ -44,5 +52,30 @@ public class LC252_MeetingRooms {
         return true;
     }
 
+    public boolean solution2(Interval[] intervals) {
+
+        if (intervals == null || intervals.length == 0) return true;
+
+        int len = intervals.length;
+
+        int[] begins = new int[len];
+
+        int[] ends = new int[len];
+
+        for (int i = 0; i < len; i++) {
+            begins[i] = intervals[i].start;
+            ends[i] = intervals[i].end;
+        }
+
+        Arrays.sort(begins);
+
+        Arrays.sort(ends);
+
+        for (int i = 1; i < len; i++) {
+            if (begins[i] < ends[i - 1]) return false;
+        }
+
+        return true;
+    }
 }
 

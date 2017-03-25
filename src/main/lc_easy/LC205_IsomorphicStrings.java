@@ -67,4 +67,29 @@ public class LC205_IsomorphicStrings {
         }
         return map.size()== new HashSet<>(map.values()).size();
     }
+
+    // solution 4
+    public boolean isIsomorphic4(String s, String t) {
+        if (s == null && t == null) return true;
+        if (s == null || t == null) return false;
+        if (s.length() != t.length()) return false;
+
+        Map<Character, Character> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char sc = s.charAt(i);
+            if (map.containsKey(sc)) {
+                if (map.get(sc) != t.charAt(i)) {
+                    return false;
+                }
+            } else {
+                if (map.values().contains(t.charAt(i))) {
+                    return false;
+                }
+                map.put(sc, t.charAt(i));
+            }
+        }
+
+        return true;
+    }
 }
